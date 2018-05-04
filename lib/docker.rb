@@ -33,6 +33,7 @@ module Docker
   require 'docker/messages'
   require 'docker/node'
   require 'docker/service'
+  require 'docker/secret'
   require 'docker/swarm'
   require 'docker/util'
   require 'docker/version'
