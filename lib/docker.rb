@@ -35,6 +35,7 @@ module Docker
   require 'docker/service'
   require 'docker/secret'
   require 'docker/swarm'
+  require 'docker/task'
   require 'docker/util'
   require 'docker/version'
   require 'docker/volume'
