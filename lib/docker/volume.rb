@@ -3,9 +3,11 @@ class Docker::Volume
   include Docker::Base
 
   # /volumes/volume_name doesnt return anything
-  def remove(opts = {}, conn = Docker.connection)
-    conn.delete("/volumes/#{id}")
+  def remove(opts = {})
+    connection.delete("/volumes/#{id}", opts)
+    true
   end
+  alias_method :delete, :remove
 
   def normalize_hash(hash)
     hash['id'] ||= hash['Name']
