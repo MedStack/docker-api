@@ -24,6 +24,7 @@ module Docker
   require 'docker/error'
   require 'docker/connection'
   require 'docker/base'
+  require 'docker/config'
   require 'docker/container'
   require 'docker/network'
   require 'docker/event'
