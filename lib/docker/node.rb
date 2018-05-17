@@ -19,12 +19,12 @@ class Docker::Node
   end
 
   def update(opts)
-    filter = opts.delete('filter') || opts.delete(:filter)
-    query = {}
-    query['filter'] = filter if filter 
-    
-    connection.post("/services/#{self.id}", query, body: opts.to_json)
+    options = {
+      version: info.dig("Version", "Index")
+    }
+
+    connection.post("/nodes/#{self.id}/update", options, body: opts.to_json)
   end
-  
+
   private_class_method :new
 end
