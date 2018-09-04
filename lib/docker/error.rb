@@ -37,4 +37,7 @@ module Docker::Error
 
   # Raised when an IO action fails.
   class IOError < DockerError; end
+
+  # Raised when there is an issue during the connection
+  class SocketError < DockerError; end
 end

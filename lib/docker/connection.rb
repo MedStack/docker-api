@@ -50,6 +50,8 @@ class Docker::Connection
     raise ServerError, ex.response.body
   rescue Excon::Errors::Timeout => ex
     raise TimeoutError, ex.message
+  rescue Excon::Error::Socket => ex
+    raise SocketError, ex.message
   end
 
   def log_request(request)
