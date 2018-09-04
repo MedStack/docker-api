@@ -23,6 +23,18 @@ class Docker::Service
     new(conn, hash)
   end
 
+  def self.create_with_authentication(opts = {}, creds = nil, conn = Docker.connection)
+    name = opts.delete('name') || opts.delete(:name)
+    query = {}
+    query['name'] = name if name
+
+    credentials = creds || Docker.creds || {}
+    headers = Docker::Util.build_auth_header(credentials)
+    resp = conn.post('/services/create', query, :body => opts.to_json, :headers => headers)
+    hash = Docker::Util.parse_json(resp) || {}
+    new(conn, hash)
+  end
+
   def remove(opts = {})
     connection.delete("/services/#{self.id}", opts)
     nil
