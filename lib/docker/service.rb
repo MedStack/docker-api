@@ -41,7 +41,11 @@ class Docker::Service
   end
 
   def update(opts)
-    connection.post("/services/#{self.id}/update", {}, body: opts.to_json)
+    query = {
+      version:  info.dig("Version", "Index")
+    }
+
+    connection.post("/services/#{self.id}/update", query, body: opts.to_json)
   end
 
   def logs(opts = {})
