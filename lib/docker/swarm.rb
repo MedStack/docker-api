@@ -13,9 +13,7 @@ class Docker::Swarm
   end
 
   def self.join(opts = {}, conn = Docker.connection)
-    resp = conn.post('/swarm/join', {}, :body => opts.to_json)
-    hash = Docker::Util.parse_json(resp) || {}
-    new(conn, hash)
+    !!conn.post('/swarm/join', {}, :body => opts.to_json)
   end
 
   def self.leave(force = false, conn = Docker.connection)
