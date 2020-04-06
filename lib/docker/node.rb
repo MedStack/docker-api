@@ -12,6 +12,11 @@ class Docker::Node
     node_json = conn.get("/nodes/#{URI.encode(id)}")
     new(conn, Docker::Util.parse_json(node_json) || {})
   end
+  
+  def self.remove(id, conn = Docker.connection)
+    json = conn.delete("/nodes/#{URI.encode(id)}")
+    Docker::Util.parse_json(json) || {}
+  end
 
   def remove(opts = {})
     connection.delete("/nodes/#{self.id}", opts)
