@@ -109,7 +109,7 @@ class Docker::Image
     resp = conn.post('/images/prune', opts)
     Docker::Util.parse_json(resp) || {}
   end
-  
+
   class << self
 
     # Create a new Image.
