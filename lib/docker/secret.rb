@@ -1,3 +1,4 @@
+# This class represents a Docker Secret. Secrets are part of the Swarm API.
 class Docker::Secret
   include Docker::Base
 

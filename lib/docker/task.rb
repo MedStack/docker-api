@@ -1,3 +1,4 @@
+# This class represents a Docker Swarm Task.
 class Docker::Task
   include Docker::Base
 

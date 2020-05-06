@@ -1,3 +1,5 @@
+# This class represents a Docker Config. Config entities are part of the Swarm
+# API.
 class Docker::Config
   include Docker::Base
 
