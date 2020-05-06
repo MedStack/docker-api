@@ -364,6 +364,12 @@ class Docker::Container
   def path_for(resource)
     "/containers/#{self.id}/#{resource}"
   end
+  
+  # Prune Containers.
+  def self.prune(opts = {}, conn = Docker.connection)
+    resp = conn.post('/containers/prune', opts)
+    Docker::Util.parse_json(resp) || {}
+  end
 
   private :path_for
   private_class_method :new

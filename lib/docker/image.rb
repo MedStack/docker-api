@@ -104,6 +104,12 @@ class Docker::Image
     self
   end
 
+  # Prune Images.
+  def self.prune(opts = {}, conn = Docker.connection)
+    resp = conn.post('/images/prune', opts)
+    Docker::Util.parse_json(resp) || {}
+  end
+  
   class << self
 
     # Create a new Image.
