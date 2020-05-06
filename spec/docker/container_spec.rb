@@ -109,6 +109,7 @@ describe Docker::Container do
       }
 
       it "yields a Hash" do
+        skip("read timeout broken after Docker 17.06, resulting in stalled CI jobs")
         subject.start! # If the container isn't started, no stats will be streamed
         called_count = 0
         subject.stats do |output|
@@ -120,6 +121,7 @@ describe Docker::Container do
       end
 
       it "returns after :read_timeout if the container is not running", :docker_old do
+        skip("read timeout broken after Docker 17.06, resulting in stalled CI jobs")
         called_count = 0
         subject.stats(read_timeout: 3) do |output|
           called_count +=1
