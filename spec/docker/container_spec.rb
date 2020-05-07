@@ -277,7 +277,7 @@ describe Docker::Container do
       it 'raises an error' do
         expect { subject.copy('/lol/not/a/real/file') { |chunk| puts chunk } }
           .to raise_error(
-            Docker::Error::ServerError,
+            Docker::Error::DockerError,
             %r{Could not find the file /lol/not/a/real/file in container}
           )
       end
