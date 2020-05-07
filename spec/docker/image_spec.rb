@@ -266,7 +266,7 @@ describe Docker::Image do
         subject { described_class.create('fromImage' => 'swipely/base') }
         it 'should raise an error if no command is specified' do
           expect { container }.to raise_error(
-            Docker::Error::ClientError,
+            Docker::Error::DockerError,
             /No\ command\ specified/
           )
         end
@@ -280,7 +280,7 @@ describe Docker::Image do
         subject { described_class.create('fromImage' => 'swipely/base') }
         it 'should raise an error if no command is specified' do
           expect { container }.to raise_error(
-            Docker::Error::ServerError,
+            Docker::Error::DockerError,
             /No\ command\ specified/
           )
         end
