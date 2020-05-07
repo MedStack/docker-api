@@ -655,7 +655,8 @@ describe Docker::Image do
     context 'with an invalid Dockerfile' do
       it 'throws a UnexpectedResponseError' do
         expect { subject.build('lololol') }
-            .to raise_error(Docker::Error::UnexpectedResponseError)
+            .to raise_error(Docker::Error::DockerError,
+              /[uU]nknown instruction: LOLOLOL/)
       end
     end
 

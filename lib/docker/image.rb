@@ -262,8 +262,8 @@ class Docker::Image
         :response_block => response_block(body, &block)
       )
       new(connection, 'id' => Docker::Util.extract_id(body))
-    rescue Docker::Error::ServerError
-      raise Docker::Error::UnexpectedResponseError
+    rescue Docker::Error::ServerError => ex
+      raise Docker::Error::UnexpectedResponseError, ex.message
     end
 
     # Given File like object containing a tar file, builds an Image.
