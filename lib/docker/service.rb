@@ -9,7 +9,7 @@ class Docker::Service
   end
 
   def self.get(id, opts = {}, conn = Docker.connection)
-    service_json = conn.get("/services/#{URI.encode(id)}", opts)
+    service_json = conn.get("/services/#{Docker::Util.escape(id)}", opts)
     new(conn, Docker::Util.parse_json(service_json) || {})
   end
 

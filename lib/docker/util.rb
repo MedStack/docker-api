@@ -8,6 +8,13 @@ module Docker::Util
 
   module_function
 
+  # Escapes URI fragments
+  #
+  # @param str [String]
+  def escape(str)
+    CGI.escape(str).gsub("+", "%20")
+  end
+
   # Attaches to a HTTP stream
   #
   # @param block

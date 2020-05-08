@@ -8,7 +8,7 @@ class Docker::Secret
   end
 
   def self.get(id, opts = {}, conn = Docker.connection)
-    resp = conn.get("/secrets/#{URI.encode(id)}", opts)
+    resp = conn.get("/secrets/#{Docker::Util.escape(id)}", opts)
     hash = Docker::Util.parse_json(resp) || {}
     new(conn, hash)
   end

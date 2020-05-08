@@ -132,7 +132,7 @@ class Docker::Image
 
     # Return a specific image.
     def get(id, opts = {}, conn = Docker.connection)
-      image_json = conn.get("/images/#{URI.encode(id)}/json", opts)
+      image_json = conn.get("/images/#{Docker::Util.escape(id)}/json", opts)
       hash = Docker::Util.parse_json(image_json) || {}
       new(conn, hash)
     end
