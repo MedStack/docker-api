@@ -6,6 +6,18 @@ SingleCov.covered! uncovered: 71
 describe Docker::Util do
   subject { described_class }
 
+  describe '.escape' do
+    subject { described_class.escape(arg) }
+
+    context 'when input has spaces' do
+      let(:arg) { 'this has spaces' }
+
+      it 'should replace them with %20' do
+        expect(subject).to eq 'this%20has%20spaces'
+      end
+    end
+  end
+
   describe '.parse_json' do
     subject { described_class.parse_json(arg) }
 

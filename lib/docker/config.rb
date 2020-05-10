@@ -9,7 +9,7 @@ class Docker::Config
   end
 
   def self.get(id, opts = {}, conn = Docker.connection)
-    resp = conn.get("/configs/#{URI.encode(id)}", opts)
+    resp = conn.get("/configs/#{Docker::Util.escape(id)}", opts)
     hash = Docker::Util.parse_json(resp) || {}
     new(conn, hash)
   end
