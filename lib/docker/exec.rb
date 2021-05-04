@@ -25,6 +25,15 @@ class Docker::Exec
     new(conn, hash)
   end
 
+  # Fetch an already created Exec instance.
+  #
+  # @return [Docker::Exec]
+  def self.get(id, conn = Docker.connection)
+    resp = conn.get("/exec/#{id}/json")
+    new(conn, Docker::Util.parse_json(resp) || {})
+  end
+end
+
   # Get info about the Exec instance
   #
   def json
