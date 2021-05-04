@@ -32,7 +32,6 @@ class Docker::Exec
     resp = conn.get("/exec/#{id}/json")
     new(conn, Docker::Util.parse_json(resp) || {})
   end
-end
 
   # Get info about the Exec instance
   #
