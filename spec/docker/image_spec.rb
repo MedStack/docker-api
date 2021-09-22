@@ -301,7 +301,7 @@ describe Docker::Image do
       after { container.remove }
 
       it 'returns 50' do
-        expect(container.json["Config"]["CpuShares"]).to eq 50
+        expect(container.json["HostConfig"]["CpuShares"]).to eq 50
       end
     end
   end

@@ -206,10 +206,10 @@ describe Docker::Container do
 
     it "updates the container" do
       subject.refresh!
-      expect(subject.info.fetch("Config").fetch("CpuShares")).to eq 60000
+      expect(subject.info.fetch("HostConfig").fetch("CpuShares")).to eq 60000
       subject.update("CpuShares" => 50000)
       subject.refresh!
-      expect(subject.info.fetch("Config").fetch("CpuShares")).to eq 50000
+      expect(subject.info.fetch("HostConfig").fetch("CpuShares")).to eq 50000
     end
   end
 
