@@ -105,7 +105,7 @@ class Docker::Image
   end
 
   # Prune Images.
-  def self.prune(opts = {}, conn = Docker.connection)
+  def prune(opts = {}, conn = Docker.connection)
     resp = conn.post('/images/prune', opts)
     Docker::Util.parse_json(resp) || {}
   end
