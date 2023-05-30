@@ -24,5 +24,9 @@ class Docker::Swarm
     !!conn.post('/swarm/leave', query)
   end
 
+  def self.update(opts = {}, conn = Docker.connection)
+    !!conn.post('/swarm/join', {}, :body => opts.to_json)
+  end
+
   private_class_method :new
 end
