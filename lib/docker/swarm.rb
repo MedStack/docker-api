@@ -24,8 +24,12 @@ class Docker::Swarm
     !!conn.post('/swarm/leave', query)
   end
 
-  def self.update(opts = {}, conn = Docker.connection)
-    !!conn.post('/swarm/update', {}, :body => opts.to_json)
+  def self.update(version = 1, opts = {}, conn = Docker.connection)
+    query = {
+      "version" => version
+    }
+
+    !!conn.post('/swarm/update', query, :body => opts.to_json)
   end
 
   private_class_method :new
