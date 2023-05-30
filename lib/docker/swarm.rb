@@ -25,7 +25,7 @@ class Docker::Swarm
   end
 
   def self.update(opts = {}, conn = Docker.connection)
-    !!conn.post('/swarm/join', {}, :body => opts.to_json)
+    !!conn.post('/swarm/update', {}, :body => opts.to_json)
   end
 
   private_class_method :new
